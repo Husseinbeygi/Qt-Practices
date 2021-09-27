@@ -10,12 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     SysInfo.cpp \
+    SysInfoLinuxImpl.cpp \
+    SysInfoWindowsImpl.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
     MainWindow.h \
-    SysInfo.h
+    SysInfo.h \
+    SysInfoLinuxImpl.h \
+    SysInfoWindowsImpl.h
 
 FORMS += \
     MainWindow.ui
