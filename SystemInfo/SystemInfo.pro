@@ -1,8 +1,8 @@
-QT       += core gui
+QT       += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++2a
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -20,6 +20,16 @@ HEADERS += \
     SysInfo.h \
     SysInfoLinuxImpl.h \
     SysInfoWindowsImpl.h
+
+windows {
+    SOURCES += SysInfoWindowsImpl.cpp
+    HEADERS += SysInfoWindowsImpl.h
+}
+
+linux {
+    SOURCES += SysInfoLinuxImpl.cpp
+    HEADERS += SysInfoLinuxImpl.h
+}
 
 FORMS += \
     MainWindow.ui
