@@ -11,6 +11,7 @@ CONFIG += c++2a
 SOURCES += \
     SysInfo.cpp \
     SysInfoLinuxImpl.cpp \
+    SysInfoMacImpl.cpp \
     SysInfoWindowsImpl.cpp \
     main.cpp \
     MainWindow.cpp
@@ -19,17 +20,9 @@ HEADERS += \
     MainWindow.h \
     SysInfo.h \
     SysInfoLinuxImpl.h \
+    SysInfoMacImpl.h \
     SysInfoWindowsImpl.h
 
-windows {
-    SOURCES += SysInfoWindowsImpl.cpp
-    HEADERS += SysInfoWindowsImpl.h
-}
-
-linux {
-    SOURCES += SysInfoLinuxImpl.cpp
-    HEADERS += SysInfoLinuxImpl.h
-}
 
 FORMS += \
     MainWindow.ui
