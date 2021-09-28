@@ -1,30 +1,17 @@
 #include "SysInfo.h"
+#include <QtGlobal>
+#include "SysInfoLinuxImpl.h"
 
 SysInfo &SysInfo::instance()
 {
-
+    static SysInfoLinuxImpl singleton;
+    return singleton;
 }
 
 SysInfo::~SysInfo()
 {
 
 }
-
-void SysInfo::init()
-{
-
-}
-
-double SysInfo::CpuLoadAverage()
-{
-
-}
-
-double SysInfo::MemoryUsed()
-{
-
-}
-
 SysInfo::SysInfo()
 {
 
