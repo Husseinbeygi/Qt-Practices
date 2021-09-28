@@ -10,6 +10,7 @@ CONFIG += c++2a
 
 SOURCES += \
     CpuWidget.cpp \
+    MemoryWidget.cpp \
     SysInfo.cpp \
     SysInfoLinuxImpl.cpp \
     SysInfoMacImpl.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     CpuWidget.h \
     MainWindow.h \
+    MemoryWidget.h \
     SysInfo.h \
     SysInfoLinuxImpl.h \
     SysInfoMacImpl.h \
