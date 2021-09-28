@@ -9,18 +9,22 @@ CONFIG += c++2a
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    CpuWidget.cpp \
     SysInfo.cpp \
     SysInfoLinuxImpl.cpp \
     SysInfoMacImpl.cpp \
+    SysInfoWidget.cpp \
     SysInfoWindowsImpl.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
+    CpuWidget.h \
     MainWindow.h \
     SysInfo.h \
     SysInfoLinuxImpl.h \
     SysInfoMacImpl.h \
+    SysInfoWidget.h \
     SysInfoWindowsImpl.h
 
 
