@@ -13,10 +13,12 @@ CONFIG += c++2a
 
 SOURCES += \
     Album.cpp \
+    AlbumDao.cpp \
     DatabaseManager.cpp \
     Picture.cpp
 
 HEADERS += \
+    AlbumDao.h \
     Core_global.h \
     Album.h \
     DatabaseManager.h \

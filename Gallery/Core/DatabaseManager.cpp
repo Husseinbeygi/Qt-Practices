@@ -16,6 +16,6 @@ DatabaseManager::~DatabaseManager()
 DatabaseManager::DatabaseManager(const QString &path):m_Database(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE")))
 
 {
-m_Database->setDatabaseName(path);
-m_Database->open();
+    m_Database->setDatabaseName(path);
+    m_Database->open();
 }
