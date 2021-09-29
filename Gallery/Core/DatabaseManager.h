@@ -4,7 +4,7 @@
 
 #include <QString>
 
-class qSqlDatabase;
+class QSqlDatabase;
 const QString DATABASE_NAME = "gallery.db";
 
 class DatabaseManager
@@ -18,7 +18,8 @@ protected:
     DatabaseManager& operator=(const DatabaseManager& rhs);
 
 private:
-    qSqlDatabase* m_Database;
+    QSqlDatabase* m_Database;
+
 };
 
 #endif // DATABASEMANAGER_H
