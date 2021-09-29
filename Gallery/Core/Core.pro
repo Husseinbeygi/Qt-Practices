@@ -12,8 +12,12 @@ CONFIG += c++2a
 
 
 SOURCES += \
-    Album.cpp
+    Album.cpp \
+    DatabaseManager.cpp \
+    Picture.cpp
 
 HEADERS += \
     Core_global.h \
-    Album.h
+    Album.h \
+    DatabaseManager.h \
+    Picture.h
