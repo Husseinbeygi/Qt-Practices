@@ -5,6 +5,7 @@
 #include <QString>
 
 class QSqlDatabase;
+class QSqlQuery;
 const QString DATABASE_NAME = "gallery.db";
 
 class DatabaseManager
@@ -12,6 +13,8 @@ class DatabaseManager
 public:
     static DatabaseManager& instance();
     ~DatabaseManager();
+
+    static void DebugQuery(const QSqlQuery& query);
 
 
 protected:

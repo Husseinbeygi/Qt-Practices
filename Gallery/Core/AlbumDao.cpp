@@ -5,6 +5,7 @@
 
 #include "AlbumDao.h"
 #include "Album.h"
+#include "DatabaseManager.h"
 
 AlbumDao::AlbumDao(QSqlDatabase &database) : m_Database(database)
 {
@@ -32,10 +33,13 @@ void AlbumDao::AddAlbum(Album &album) const
 void AlbumDao::UpdateAlbum(Album &album) const
 {
 
-   QSqlQuery query(m_Database);
-    query.prepare("UPDATE albums (name) VALUES (:name)");
-    query.bindValue(":name",album.Name());
+    QSqlQuery query(m_Database);
+    query.prepare("UPDATE albums SET name = (:name) WHERE id = (:id)");
+    query.bindValue(":name", album.Name());
+    query.bindValue(":id", album.Id());
     query.exec();
+    DatabaseManager::DebugQuery(query);
+
 }
 void AlbumDao::DeleteAlbum(int id) const
 {
