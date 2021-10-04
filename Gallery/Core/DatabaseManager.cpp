@@ -28,11 +28,14 @@ void DatabaseManager::DebugQuery(const QSqlQuery &query)
     }
 }
 
-DatabaseManager::DatabaseManager(const QString &path):m_Database(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE"))),albumDao(* m_Database)
+DatabaseManager::DatabaseManager(const QString &path):m_Database(new QSqlDatabase(QSqlDatabase::addDatabase("QSQLITE")))
+                    ,albumDao(* m_Database)
+                    ,pictureDao(* m_Database)
 
 {
     m_Database->setDatabaseName(path);
     m_Database->open();
 
     albumDao.init();
+    pictureDao.init();
 }

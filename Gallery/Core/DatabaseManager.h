@@ -1,8 +1,10 @@
 #ifndef DATABASEMANAGER_H
 #define DATABASEMANAGER_H
-#include <AlbumDao.h>
 
 #include <QString>
+
+#include <AlbumDao.h>
+#include <PictureDao.h>
 
 class QSqlDatabase;
 class QSqlQuery;
@@ -26,7 +28,7 @@ private:
 
 public:
     const AlbumDao albumDao;
-
+    const PictureDao pictureDao;
 };
 
 #endif // DATABASEMANAGER_H
