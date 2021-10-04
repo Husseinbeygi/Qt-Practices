@@ -17,7 +17,8 @@ SOURCES += \
     AlbumModel.cpp \
     DatabaseManager.cpp \
     Picture.cpp \
-    PictureDao.cpp
+    PictureDao.cpp \
+    PictureModel.cpp
 
 HEADERS += \
     AlbumDao.h \
@@ -26,4 +27,5 @@ HEADERS += \
     Album.h \
     DatabaseManager.h \
     Picture.h \
-    PictureDao.h
+    PictureDao.h \
+    PictureModel.h
