@@ -22,7 +22,7 @@ void PictureDao::init() const
         + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
         + "album_id INTEGER, "
         + "url TEXT)");
-        DatabaseManager::debugQuery(query);
+        DatabaseManager::DebugQuery(query);
     }
 }
 
@@ -36,11 +36,11 @@ void PictureDao::addPictureInAlbum(int albumId, Picture& picture) const
         + ":url"
         + ")");
     query.bindValue(":album_id", albumId);
-    query.bindValue(":url", picture.fileUrl());
+    query.bindValue(":url", picture.FileUrl());
     query.exec();
-    DatabaseManager::debugQuery(query);
-    picture.setId(query.lastInsertId().toInt());
-    picture.setAlbumId(albumId);
+    DatabaseManager::DebugQuery(query);
+    picture.SetId(query.lastInsertId().toInt());
+    picture.SetAlbumId(albumId);
 }
 
 void PictureDao::removePicture(int id) const
@@ -49,7 +49,7 @@ void PictureDao::removePicture(int id) const
     query.prepare("DELETE FROM pictures WHERE id = (:id)");
     query.bindValue(":id", id);
     query.exec();
-    DatabaseManager::debugQuery(query);
+    DatabaseManager::DebugQuery(query);
 }
 
 void PictureDao::removePicturesForAlbum(int albumId) const
@@ -58,7 +58,7 @@ void PictureDao::removePicturesForAlbum(int albumId) const
     query.prepare("DELETE FROM pictures WHERE album_id = (:album_id)");
     query.bindValue(":album_id", albumId);
     query.exec();
-    DatabaseManager::debugQuery(query);
+    DatabaseManager::DebugQuery(query);
 }
 
 unique_ptr<vector<unique_ptr<Picture>>> PictureDao::picturesForAlbum(int albumId) const
@@ -67,13 +67,13 @@ unique_ptr<vector<unique_ptr<Picture>>> PictureDao::picturesForAlbum(int albumId
     query.prepare("SELECT * FROM pictures WHERE album_id = (:album_id)");
     query.bindValue(":album_id", albumId);
     query.exec();
-    DatabaseManager::debugQuery(query);
+    DatabaseManager::DebugQuery(query);
     unique_ptr<vector<unique_ptr<Picture>>> list(new vector<unique_ptr<Picture>>());
     while(query.next()) {
         unique_ptr<Picture> picture(new Picture());
-        picture->setId(query.value("id").toInt());
-        picture->setAlbumId(query.value("album_id").toInt());
-        picture->setFileUrl(query.value("url").toString());
+        picture->SetId(query.value("id").toInt());
+        picture->SetAlbumId(query.value("album_id").toInt());
+        picture->SetFileUrl(query.value("url").toString());
         list->push_back(move(picture));
     }
     return list;
