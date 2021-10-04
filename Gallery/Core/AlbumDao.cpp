@@ -3,6 +3,7 @@
 #include <QStringList>
 #include <QVariant>
 
+
 #include "AlbumDao.h"
 #include "Album.h"
 #include "DatabaseManager.h"
@@ -27,6 +28,7 @@ void AlbumDao::AddAlbum(Album &album) const
     query.bindValue(":name",album.Name());
     query.exec();
     album.SetId(query.lastInsertId().toInt());
+    DatabaseManager::DebugQuery(query);
 
 }
 
@@ -47,22 +49,23 @@ void AlbumDao::DeleteAlbum(int id) const
      query.prepare("DELETE albums WHERE (:id)");
      query.bindValue(":id",id);
      query.exec();
+     DatabaseManager::DebugQuery(query);
+
 }
 
-QVector<Album *> AlbumDao::albums() const
+
+
+unique_ptr<vector<unique_ptr<Album>>> AlbumDao::albums() const
 {
 
     QSqlQuery query("SELECT * FROM albums",m_Database);
     query.exec();
-    QVector<Album *> list;
+    unique_ptr<vector<unique_ptr<Album>>> list(new vector<unique_ptr<Album>>);
     while(query.next()) {
-        Album* album = new Album();
+        unique_ptr<Album> album(new Album());
         album->SetId(query.value("id").toInt());
         album->SetName(query.value("name").toString());
-        list.append(album);
+        list->push_back(move(album));
     }
     return list;
-
-
-
 }
