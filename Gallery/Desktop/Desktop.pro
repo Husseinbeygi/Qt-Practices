@@ -10,12 +10,14 @@ CONFIG += c++2a
 
 SOURCES += \
     AlbumListWidget.cpp \
+    ThumbnailProxyModel.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
     AlbumListWidget.h \
-    MainWindow.h
+    MainWindow.h \
+    ThumbnailProxyModel.h
 
 FORMS += \
     AlbumListWidget.ui \
