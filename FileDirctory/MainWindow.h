@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDir>
+#include <QFileSystemModel>
+#include <QString>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,8 +18,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void init();
+private slots:
+    void on_treeView_activated(const QModelIndex &index);
 
 private:
     Ui::MainWindow *ui;
+
+   QFileSystemModel m_Dir;
+   QFileSystemModel m_File;
 };
 #endif // MAINWINDOW_H
