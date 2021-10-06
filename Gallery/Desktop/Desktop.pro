@@ -10,18 +10,26 @@ CONFIG += c++2a
 
 SOURCES += \
     AlbumListWidget.cpp \
+    AlbumWidget.cpp \
+    PictureDelegate.cpp \
+    PictureWidget.cpp \
     ThumbnailProxyModel.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
     AlbumListWidget.h \
+    AlbumWidget.h \
     MainWindow.h \
+    PictureDelegate.h \
+    PictureWidget.h \
     ThumbnailProxyModel.h
 
 FORMS += \
     AlbumListWidget.ui \
-    MainWindow.ui
+    AlbumWidget.ui \
+    MainWindow.ui \
+    PictureWidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
