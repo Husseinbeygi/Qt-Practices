@@ -52,11 +52,37 @@ QString MainWindow::GenerateText(QString BatName, QString ChargePercent) {
       .arg(BatName, ChargePercent);
 }
 
+bool MainWindow::createFile(QString BatName, QString ChargePercent) {
+  QFile file("/etc/systemd/system/battery-charge-threshold1.service");
+  if (!file.open(QIODevice::WriteOnly)) {
+    qWarning() << file.errorString();
+    return false;
+  }
+
+  QTextStream stream(&file);
+  QString banner = GenerateText(BatName, ChargePercent);
+  qInfo() << "Writing " << banner;
+  stream << banner;
+
+  file.close();
+
+  return true;
+
+  //  QProcess::execute(
+  //      QString("echo '<password>' | sudo -S mkdir "
+  //              "/etc/systemd/system/battery-charge-threshold111.service"));
+  //  return QProcess::execute(
+  //      QString("echo '<password>' | sudo -S echo "
+  //              "/etc/systemd/system/battery-charge-threshold111.service <
+  //              %0")
+  //          .arg(GenerateText(BatName, ChargePercent)));
+}
+
 void MainWindow::on_btn_Box_accepted() {
   QString option = GetOption(ui->groupBox);
   if (option == "Full Capacity Mode") {
 
-    qDebug() << GenerateText(ui->cmb_BatteryName->currentText(), "100");
+    qDebug() << createFile(ui->cmb_BatteryName->currentText(), "100");
 
   } else if ("Maximum Life Span Mode") {
     qDebug() << GenerateText(ui->cmb_BatteryName->currentText(), "60");

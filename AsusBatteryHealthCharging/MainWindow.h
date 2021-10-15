@@ -4,6 +4,7 @@
 #include "Battery.h"
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QProcess>
 #include <QStringList>
 #include <QSysInfo>
 
@@ -19,6 +20,7 @@ class MainWindow : public QMainWindow {
 public:
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
+  QString GenerateText(QString BatName, QString ChargePercent);
 
 private slots:
 
@@ -33,6 +35,6 @@ private:
   Battery *m_Battery;
   QString BatName = "";
   QMessageBox m_MessageBox;
-  QString GenerateText(QString BatName, QString ChargePercent);
+  bool createFile(QString BatName, QString ChargePercent);
 };
 #endif // MAINWINDOW_H
